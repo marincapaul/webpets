@@ -26,6 +26,7 @@ gem "importmap-rails"
 
 gem 'haml-rails'
 gem 'devise'
+gem 'activeadmin'
 
 # TailwindCSS 3.0
 gem 'tailwindcss-rails'
