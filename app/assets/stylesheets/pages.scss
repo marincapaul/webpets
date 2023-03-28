@@ -1,0 +1,68 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+form input[type=text], form input[type=password], form input[type=email], form input[type=number], form input[type=url], form input[type=tel], form input[type=date], form input[type=time], form textarea {
+  width: 100%;
+  border: 1px solid #c9d0d6;
+  border-radius: 3px;
+  font-size: 0.95em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  outline: none;
+  padding: 8px 10px 7px;
+}
+.fdb-block .fdb-touch {
+  border-top: solid 0.3125rem #3540ab;
+  z-index: 2;
+}
+.gradient {
+  background: linear-gradient(90deg, #0b135c 0%, #5c6bf5 100%) !important;
+}
+.dark-blue {
+  background-color: #0b135c;
+}
+.light-blue {
+  background-color: #5c6bf5;
+}
+.medium-blue {
+  background-color: #1929b7;
+}
+.break-word {
+  white-space: normal;
+  word-wrap: break-word;
+}
+.no-underline{
+  text-decoration: none !important;
+}
+footer.footer-large {
+  padding: 4.25rem 0!important;
+}
+
+.fdb-box {
+  padding: 1rem 1rem;
+  overflow: hidden;
+  color: #444;
+  border-radius: .25rem;
+  box-shadow: 0 .3125rem .875rem 0 rgba(129,129,129,.2)!important;
+}
+
+.fdb-box-resume-pic {
+  padding: 1rem 1rem;
+  background-color: #3C4558 !important;
+  overflow: hidden;
+  color: #444;
+  border-radius: .25rem;
+  box-shadow: 0 .3125rem .875rem 0 rgba(129,129,129,.2)!important;
+}
+html {
+  scroll-behavior: smooth;
+}
+.col{
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+}
+.icons:hover{
+  color: #5fc2ff !important;
+  text-decoration: none !important;
+}
