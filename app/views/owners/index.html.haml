@@ -6,9 +6,15 @@
           .row.justify-content-start
             .col-12.col-xl-8.text-start
               %h1.font-weight-bold.text-lg Owners
-  - @owners.each do |owner|
-    %h1.text-lg.font-semibold.pb-3= "#{owner.first_name} #{owner.last_name}"
-    %button.bg-blue-500.hover:bg-blue-700.text-white.font-bold.py-2.px-4.rounded buton
-    .btn.btn-dark.text-base= link_to "See full profile", owner_path(owner)
-    .mx-5.pt-5
-      .p-6.border-t.border-gray-300.rounded-b.dark:border-gray-600
+      - @owners.each do |owner|
+        .col.mb-3
+          .fdb-box.fdb-touch
+            .row.justify-content-start
+              .col-8.col-xl-8.text-start
+                %h1.text-lg.font-semibold.pb-3= "#{owner.first_name} #{owner.last_name}"
+              .grid.grid-rows-3
+                .text-lg Contact
+                %p.text-base
+                  Email: #{owner.email}
+                .box-border
+                  %p.btn.btn-dark.text-base= link_to "See full profile", owner_path(owner)
