@@ -12,6 +12,7 @@
  *
  *= require "flowbite"
  *= require_self
+ *= stub "active_admin"
 
  *= stub "foundation_emails"
  *= require select2
