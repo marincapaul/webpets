@@ -1,7 +1,10 @@
 %div
-  %h1.font-bold.text-4xl WebPets
-  %p.light-blue Welcome to your pet's website
+  %h1.font-bold.text-4xl.m-10 WebPets
+  %p Welcome to your pet's website
 
-  = link_to "sign in", new_owner_session_url
+  - if owner_signed_in?
+    = link_to "log out", destroy_owner_session_url, method: :delete
+  - else 
+    = link_to "sign in", new_owner_session_url
 
   
