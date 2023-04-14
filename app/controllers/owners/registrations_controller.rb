@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class   RegistrationsController < Devise::RegistrationsController
+class Owner::RegistrationsController < Devise::RegistrationsController
 
   protected
   # The path used after sign up.
