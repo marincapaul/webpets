@@ -5,6 +5,7 @@
     "@rails/webpacker": "5.4.4",
     "autoprefixer": "^10.4.14",
     "esbuild": "^0.17.14",
+    "flowbite": "^1.6.5",
     "postcss": "^8.4.21",
     "sass": "^1.60.0",
     "tailwindcss": "^3.3.0",
@@ -18,10 +19,8 @@
   "engines": {
     "node": "14.x",
     "yarn": "1.x"
-  }
-  ,
+  },
   "scripts": {
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
   }
-
 }
