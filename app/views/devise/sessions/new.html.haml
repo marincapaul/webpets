@@ -1,33 +1,36 @@
-%section.bg-gray-50.dark:bg-gray-900
-  .flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.md:h-screen.lg:py-0
-    %h1.text-white.font-bold.text-4xl.m-10 Welcome to WebPets!
+%section.bg-gray-900
+  .flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
+    %h1.text-white.font-bold.text-4xl.mb-4.mt-10 Welcome to WebPets!
     %a.flex.items-center{:href => '#'}
-      //%img.mb-3.h-20.md:h-10{:alt => "LifeVine Logo", :src => image_path("logo-mixed-with-name-png.png")}/
-    .w-full.bg-white.rounded-lg.shadow.dark:border.md:mt-0.sm:max-w-md.xl:p-0.dark:bg-gray-800.dark:border-gray-700
+      %img.mb-3.h-20{:alt => "WebPets Logo", :src => image_path("logo.png")}/
+    .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-md.xl:p-0.bg-gray-800.border-gray-700
       .p-6.space-y-4.md:space-y-6.sm:p-8
-        %h1.text-xl.font-bold.leading-tight.tracking-tight.text-gray-900.md:text-2xl.dark:text-white
+        %h1.text-xl.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
           Sign in to your account
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = render "devise/shared/error_messages", resource: resource
           .field
-            .block.mb-2.text-sm.font-medium.text-gray-900.dark:text-white
+            .block.mb-2.text-sm.font-medium.text-white
               = f.label :email
-              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-1000 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
           .field
-            .block.mb-2.text-sm.font-medium.text-gray-900.dark:text-white
+            .block.mb-2.text-sm.font-medium.text-white
               = f.label :password 
-              = f.password_field :password, :placeholder => "••••••••", autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              = f.password_field :password, :placeholder => "••••••••", autocomplete: "current-password", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
           - if devise_mapping.rememberable?
             .field
               .flex.items-center.justify-between
                 .flex.items-start
                   .flex.items-center.h-5
-                    = f.check_box :remember_me, class: 'w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800'
+                    = f.check_box :remember_me, class: 'w-4 h-4 border rounded focus:ring-3 bg-gray-700 text-white border-gray-600 focus:ring-primary-600 ring-offset-gray-800'
                     .ml-3.text-sm.text-white
                       = f.label :remember_me
-                .text-sm.font-medium.text-logo-green.dark:text-white
-                  = render "devise/shared/links"
+                .text-sm.font-medium.text-white
+                  = link_to "Forgot your password?", new_password_path(resource_name), {class: "hover:underlinde text-sm font-medium text-primary-500"}
           %br/
           .actions
-            %button.btn.w-full.text-white.bg-logo-blue.hover:bg-logo-dark-blue.focus:ring-4.focus:outline-none.focus:ring-primary-300.font-medium.rounded-lg.text-sm.px-5.text-center.dark:bg-primary-600.dark:hover:bg-primary-700.dark:focus:ring-primary-800
+            %button.btn.w-full.text-white.focus:ring-4.focus:outline-none.font-medium.rounded-lg.text-sm.px-5.text-center.bg-primary-600.hover:bg-primary-700.focus:ring-primary-800
               = f.submit "Sign in", class: 'py-2.5', role: "button"
+          %p.text-sm.font-light.text-gray-500.dark:text-gray-400.mt-5
+            Don't have an account yet?
+            = link_to "Sign up", new_registration_path(resource_name), {class:"font-medium text-primary-500 hover:underline"}
