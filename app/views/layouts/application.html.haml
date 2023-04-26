@@ -10,7 +10,9 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    
+    =render 'layouts/navbar'
     = render 'layouts/notice'
     = render 'layouts/alert'
-    =render 'layouts/navbar'
     = yield
+    =render 'layouts/footer'
