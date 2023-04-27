@@ -1,4 +1,7 @@
-%h2
-  Welcome 
-  = @owner.first_name
-  !
+%section.bg-gray-900
+  %h2.text-white
+    Welcome 
+    = @owner.first_name 
+    !
+    = link_to "Edit Account",edit_owner_registration_path , class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
+    = link_to "Edit Profile", edit_profile_owners_path, class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"

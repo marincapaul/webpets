@@ -29,6 +29,7 @@ gem 'html2haml'
 
 gem 'devise'
 gem 'activeadmin'
+gem 'active_storage_validations'
 
 # TailwindCSS 3.0
 gem 'tailwindcss-rails'
