@@ -17,7 +17,6 @@
                     - else 
                       %img#imgNew.img-fluid.img-thumbnail.w-20.h-20.rounded-full.object-cover{:src => image_path('avatar_placeholder.png')}/
                   = f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', value: @owner.avatar, id:"imgInp", onchange: "previewImg(event)"
-
                 %div
                   .field
                     .block.mb-2.text-sm.font-medium.text-white
@@ -27,7 +26,7 @@
                     .block.mb-2.text-sm.font-medium.text-white
                       = f.label :last_name
                       = f.text_field :last_name, autofocus: true, class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-          .actions.mt-5
+          .actions.mt-5.mx-8
             %button.btn.w-full.text-white.focus:ring-4.focus:outline-none.font-medium.rounded-lg.text-sm.px-5.text-center.bg-primary-600.hover:bg-primary-700.focus:ring-primary-800
               = f.submit "Update profile", class: 'py-2.5', role: "button"
 

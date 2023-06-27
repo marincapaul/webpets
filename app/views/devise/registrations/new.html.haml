@@ -1,21 +1,42 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+%section.bg-gray-900.min-h-screen
+  .flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
+    %h1.text-white.font-bold.text-4xl.mb-4.mt-10 Welcome to WebPets!
+    %a.flex.items-center{:href => '#'}
+      %img.mb-3.h-20{:alt => "WebPets Logo", :src => image_path("logo.png")}/
+    .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-md.xl:p-0.bg-gray-800.border-gray-700
+      .p-6.space-y-4.md:space-y-6.sm:p-8
+        %h1.text-xl.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
+          Create a new account
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .field
+            .block.mb-2.text-sm.font-medium.text-white
+              = f.label :email
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+          .field
+            .block.mb-2.text-sm.font-medium.text-white
+              = f.label :first_name
+              = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "First name", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+          .field
+            .block.mb-2.text-sm.font-medium.text-white
+              = f.label :last_name
+              = f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "Last name", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+
+          .field
+            .block.mb-2.text-sm.font-medium.text-white
+              = f.label :password
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} characters minimum)
+              = f.password_field :password, :placeholder => "••••••••", autocomplete: "current-password", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+          .field
+            .block.mb-2.text-sm.font-medium.text-white
+              = f.label :password_confirmation
+              = f.password_field :password_confirmation, :placeholder => "••••••••", autocomplete: "current-password", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+          %br/
+          .actions
+            %button.btn.w-full.text-white.focus:ring-4.focus:outline-none.font-medium.rounded-lg.text-sm.px-5.text-center.bg-primary-600.hover:bg-primary-700.focus:ring-primary-800
+              = f.submit "Sign up", class: 'py-2.5', role: "button"
+          %br/
+          %span.text-white.hover:underline 
+            = render "devise/shared/links"
