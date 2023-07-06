@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     
   end
 
+
+  resources :pets, only: [:new ,:create, :destroy, :edit]
   
 
   # Defines the root path route ("/")
