@@ -1,4 +1,7 @@
 class OwnersController < ApplicationController
+  before_action :logged_in_owner, only:  [:show, :edit, :destroy, :update]
+  before_action :correct_owner, only: [:edit, :update]
+  
   def index
     @owners = Owner.all
   end
