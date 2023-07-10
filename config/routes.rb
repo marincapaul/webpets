@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :pets, only: [:new ,:create, :destroy, :edit]
+  resources :pets, only: [:new ,:show, :create, :destroy, :edit]
   
 
   # Defines the root path route ("/")

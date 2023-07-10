@@ -16,9 +16,13 @@ class PetsController < ApplicationController
   end
 
   def destroy
+    @pet.destroy
+    flash[:success] = "Pet deleted"
+    redirect_to root
   end
 
   def show
+    @pet = Pet.find(params[:id])
   end
 
   private
