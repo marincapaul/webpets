@@ -21,12 +21,27 @@ class PetsController < ApplicationController
     redirect_to root
   end
 
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def update
+    @pet = Pet.find(params[:id])
+    if @pet.update(pet_params)
+      redirect_to @pet
+      flash[:notice] = "Your pet has been updated!"
+    else
+      render 'pets/edit'
+      flash[:notice] = "Something went wrong when you tried to update your pet, please try again!"
+    end
+  end
+
   def show
     @pet = Pet.find(params[:id])
   end
 
   private
     def pet_params
-      params.require(:pet).permit(:name, :species, :breed, :age)
+      params.require(:pet).permit(:name, :species, :breed, :age, :avatar)
     end
 end
