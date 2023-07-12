@@ -39,6 +39,8 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @posts = @pet.posts
+    @new_post = Pet.find(params[:id]).posts.build
   end
 
   private
