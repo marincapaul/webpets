@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_26_164853) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_183400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,7 +93,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_164853) do
     t.index ["owner_id"], name: "index_pets_on_owner_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id", "created_at"], name: "index_posts_on_pet_id_and_created_at"
+    t.index ["pet_id"], name: "index_posts_on_pet_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "pets", "owners"
+  add_foreign_key "posts", "pets"
 end

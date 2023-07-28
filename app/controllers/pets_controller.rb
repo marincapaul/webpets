@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
   before_action :logged_in_owner, only: [:show, :edit, :destroy, :update]
-  before_action :owned_pet, only: [:edit, :destroy, :update]
+  before_action :owned_pet, only: [:edit, :destroy, :update]\
+  
   def create
     @pet = current_owner.pets.build(pet_params)
     if @pet.save
@@ -39,6 +40,8 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @posts = @pet.posts
+    @new_post = Pet.find(params[:id]).posts.build
   end
 
   private

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
   resources :pets, only: [:new ,:show, :create, :destroy, :edit, :update]
-  
+  resources :posts, only: [:new ,:show, :create, :destroy, :edit, :update]
 
   # Defines the root path route ("/")
   # root "articles#index"

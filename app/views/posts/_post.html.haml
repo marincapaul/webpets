@@ -1,0 +1,28 @@
+%li.mb-6
+  .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-lg.xl:p-0.bg-gray-800.border-gray-700
+    .p-6.space-y-4.md:space-y-6.sm:p-8
+      %div.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
+        .items-start
+          %p= link_to post.pet.name, post.pet
+          - if post.media.attached?
+            .py-5
+              .relative{"data-carousel" => "slide"}
+                .relative.h-56.overflow-hidden.rounded-lg.md:h-96{id: "carousel"}
+                  - post.media.each_with_index do |image, index|
+                    .duration-700.ease-in-out{"data-carousel-item" => "true"}
+                      %a{href: url_for(image), "data-caption" => "Caption ##{index}", "data-fancybox" => "gallery"}
+                        = image_tag image, class: "absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2", alt: '...'
+                %button.absolute.top-0.left-0.z-30.flex.items-center.justify-center.h-full.px-4.cursor-pointer.group.focus:outline-none{"data-carousel-prev" => "", type: "button"}
+                  %span.inline-flex.items-center.justify-center.w-8.h-8.rounded-full.sm:w-10.sm:h-10.group-focus:outline-none{class: "bg-gray-800/30 dark:bg-gray-800/30 group-hover:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"}
+                    %svg.w-5.h-5.text-white.sm:w-6.sm:h-6.dark:text-gray-800{"aria-hidden" => "true", fill: "none", stroke: "currentColor", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{d: "M15 19l-7-7 7-7", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
+                    %span.sr-only Previous
+                %button.absolute.top-0.right-0.z-30.flex.items-center.justify-center.h-full.px-4.cursor-pointer.group.focus:outline-none{"data-carousel-next" => "", type: "button"}
+                  %span.inline-flex.items-center.justify-center.w-8.h-8.rounded-full.sm:w-10.sm:h-10.group-focus:outline-none{class: "bg-gray-800/30 dark:bg-gray-800/30 group-hover:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"}
+                    %svg.w-5.h-5.text-white.sm:w-6.sm:h-6.dark:text-gray-800{"aria-hidden" => "true", fill: "none", stroke: "currentColor", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{d: "M9 5l7 7-7 7", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
+                    %span.sr-only Next
+            
+
+          %p= post.content
+          %p.text-base.italic= time_ago_in_words(post.created_at) + " ago"
