@@ -4,4 +4,15 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+
 import "flowbite"
+
+
+import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
+
+window.addEventListener('turbolinks:load', () => {
+    Fancybox.bind('[data-fancybox="gallery"]');
+    Fancybox.bind('[data-fancybox="gallery-profile"]');
+})
