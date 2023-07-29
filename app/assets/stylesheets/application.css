@@ -15,208 +15,233 @@
  *= stub "active_admin"
 
  *= stub "foundation_emails"
- *= require select2
+ *= require flickity.css
  *= require_tree .
  */
 
 
 .title {
-    text-align: center;
-    font-size: 30px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .button-sessions {
-    padding: 5px;
-    background-color: blue;
-    color: white;
-  }
-  
-  .align-right {
-    text-align: right;
-  }
-  
-  .nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  .right-align {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button-sessions {
+  padding: 5px;
+  background-color: blue;
+  color: white;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.right-align {
+  float: right;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #08a54f;
+}
+.off {
+  color: #ccc;
+}
+.star {
+  padding: 2px;
+  font-size: 1.6em;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.button-send-review {
+  background-color: #08a54f;
+}
+
+.button-send-review:hover {
+  background-color: #049144;
+}
+
+.button-save-rate {
+  background-color: #06325e;
+}
+
+.bg_logo_blue  {
+  background-color: #06325e;
+}
+
+.button-save-rate:hover {
+  background-color: #06325e;
+}
+
+.nav_dropdown_button {
+  background-color: #08a54f;
+}
+
+.nav_dropdown_button:hover {
+  background-color: #049144;
+}
+
+.toastui-calendar-time {
+  height: 554px !important;
+}
+
+.cancellation_fee_checkbox:checked {
+  background-color: #08a54f;
+}
+
+.cancellation_fee_checkbox:hover {
+  background-color: #d1d5db;
+}
+
+.cancellation_fee_checkbox:checked:hover {
+  background-color: #049144;
+}
+
+.select2-results__options {
+  overflow-x: hidden;
+}
+
+.mapboxgl-canvas {
+  width: 100% !important;
+  height: 350px !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+.select2-container {
     float: right;
-  }
-  
-  button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  .on {
-    color: #08a54f;
-  }
-  .off {
-    color: #ccc;
-  }
-  .star {
-    padding: 2px;
-    font-size: 1.6em;
-  }
-  
-  .input-group {
+} .select2-search--inline {
+    float: right !important;
+    margin-bottom: -5px !important;
+}
+
+.remaining {
+  color: black;
+}
+
+.read-more{
+  color: green;
+  text-decoration: underline;
+  text-decoration-color: green;
+}
+
+.read-less{
+  color: green;
+  text-decoration: underline;
+  text-decoration-color: green;
+}
+
+.button{
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.button-edit{
+  background-color: #08a54f;
+}
+
+.button-delete{
+  background-color: darkred;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-group textarea {
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
   }
-  
-  .button-send-review {
-    background-color: #08a54f;
-  }
-  
-  .button-send-review:hover {
-    background-color: #049144;
-  }
-  
-  .button-save-rate {
-    background-color: #06325e;
-  }
-  
-  .bg_logo_blue  {
-    background-color: #06325e;
-  }
-  
-  .button-save-rate:hover {
-    background-color: #06325e;
-  }
-  
-  .nav_dropdown_button {
-    background-color: #08a54f;
-  }
-  
-  .nav_dropdown_button:hover {
-    background-color: #049144;
-  }
-  
-  .toastui-calendar-time {
-    height: 554px !important;
-  }
-  
-  .cancellation_fee_checkbox:checked {
-    background-color: #08a54f;
-  }
-  
-  .cancellation_fee_checkbox:hover {
-    background-color: #d1d5db;
-  }
-  
-  .cancellation_fee_checkbox:checked:hover {
-    background-color: #049144;
-  }
-  
-  .select2-results__options {
-    overflow-x: hidden;
-  }
-  
-  .mapboxgl-canvas {
-    width: 100% !important;
-    height: 350px !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-  }
-  .select2-container {
-      float: right;
-  } .select2-search--inline {
-      float: right !important;
-      margin-bottom: -5px !important;
-  }
-  
-  .remaining {
-    color: black;
-  }
-  
-  .read-more{
-    color: green;
-    text-decoration: underline;
-    text-decoration-color: green;
-  }
-  
-  .read-less{
-    color: green;
-    text-decoration: underline;
-    text-decoration-color: green;
-  }
-  
-  .button{
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: auto;
-  }
-  
-  .button-edit{
-    background-color: #08a54f;
-  }
-  
-  .button-delete{
-    background-color: darkred;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .form-group textarea {
-    margin-right: 10px;
-  }
-  
-  @media only screen and (min-width: 768px) {
-    .footer2 {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-    }
-  }
-  
-  .qualification_bg {
-    background-color: #eee;
-  }
-  
-  .inline-display {
-    display: inline;
-  }
-  
-  .photos_img {
-    aspect-ratio: 3/4;
-    object-fit: contain;
-  }
-  
-  .indent_list {
-    text-indent: -1em;
-  }
-  
+}
+
+.qualification_bg {
+  background-color: #eee;
+}
+
+.inline-display {
+  display: inline;
+}
+
+.photos_img {
+  aspect-ratio: 3/4;
+  object-fit: contain;
+}
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #EEE;
+}
+
+.carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(carousel-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+/*   
   .carousel-padding {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -318,8 +343,8 @@
       opacity: 1;
     }
     .qualifications-input-field:disabled {
-      -webkit-text-fill-color: #444444; /* 1. sets text fill to current `color` for safari */
-      opacity: 1; /* 2. correct opacity on iOS */
+      -webkit-text-fill-color: #444444; // 1. sets text fill to current `color` for safari 
+      opacity: 1; // 2. correct opacity on iOS 
     }
   }
   
@@ -332,7 +357,7 @@
   .profile-photo {
     float: right;
     color: green;
-    margin-left: 10px; /* adjust the spacing as needed */
+    margin-left: 10px; // adjust the spacing as needed 
   }
   
   .checkfield-display {
@@ -347,7 +372,7 @@
     padding-left: 5px;
   }
   
-  /* Tooltip text */
+  // Tooltip text 
   .tooltip .tooltiptext {
     visibility: hidden;
     text-align: center;
@@ -357,12 +382,12 @@
     left: 50%; 
     margin-left: -190px;
    
-    /* Position the tooltip text - see examples below! */
+    // Position the tooltip text - see examples below! 
     position: absolute;
     z-index: 1;
   }
   
-  /* Show the tooltip text when you mouse over the tooltip container */
+  // Show the tooltip text when you mouse over the tooltip container 
   .tooltip.clicked .tooltiptext {
     visibility: visible;
   }
@@ -375,12 +400,12 @@
     left: 50%; 
     margin-left: -190px;
    
-    /* Position the tooltip text - see examples below! */
+    // Position the tooltip text - see examples below! 
     position: absolute;
     z-index: 1;
   }
   
-  /* Show the tooltip text when you mouse over the tooltip container */
+  // Show the tooltip text when you mouse over the tooltip container 
   .tooltip.clicked .tooltiptext-sessions {
     visibility: visible;
   }
@@ -396,4 +421,4 @@
   
   .time-width {
     width: 45%;
-  }
+  } */

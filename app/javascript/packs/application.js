@@ -12,7 +12,6 @@ import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 
-window.addEventListener('turbolinks:load', () => {
-    Fancybox.bind('[data-fancybox="gallery"]');
-    Fancybox.bind('[data-fancybox="gallery-profile"]');
-})
+window.Flickity = require("flickity");
+
+  
