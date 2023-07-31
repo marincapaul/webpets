@@ -15,7 +15,7 @@
           %div#imgs_media.image-icon
             %img#img_media.object-cover.w-24{:src => image_path('photo_album_placeholder.png')}/
           %div
-            = f.file_field :media, multiple: true, value: @new_post.media, onchange: "previewImgs(event, '#imgs_media')"
+            = f.file_field :media,required: true, multiple: false, value: @new_post.media, onchange: "previewImgs(event, '#imgs_media')"
           
       %br/
       .actions

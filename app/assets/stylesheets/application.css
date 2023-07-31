@@ -15,7 +15,6 @@
  *= stub "active_admin"
 
  *= stub "foundation_emails"
- *= require flickity.css
  *= require_tree .
  */
 

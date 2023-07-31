@@ -31,6 +31,8 @@ gem 'devise'
 gem 'activeadmin'
 gem 'active_storage_validations'
 
+# S3 for file uploads
+gem 'aws-sdk-s3'
 
 # TailwindCSS 3.0
 gem 'tailwindcss-rails'

@@ -2,14 +2,11 @@
   .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-lg.xl:p-0.bg-gray-800.border-gray-700
     .p-6.space-y-4.md:space-y-6.sm:p-8
       %div.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
-        .items-start
+        .items-center
           %p= link_to post.pet.name, post.pet
           - if post.media.attached?
             .py-5
-              / Flickity HTML init
-              .carousel{"data-flickity" => "{ \"wrapAround\": true }"}
-                - post.media.each do |media|
-                  .carousel-cell
-                    = image_tag(media, alt: "Slide #{post.media.index(media) + 1}")
+              .relative.carousel-height.overflow-hidden.rounded-lg
+                = image_tag post.media.first, class: "block w-full h-full object-contain"        
           %p= post.content
           %p.text-base.italic= time_ago_in_words(post.created_at) + " ago"
