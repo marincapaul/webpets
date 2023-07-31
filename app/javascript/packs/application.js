@@ -12,6 +12,4 @@ import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 
-window.Flickity = require("flickity");
-
   
