@@ -42,6 +42,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @posts = @pet.posts
     @new_post = Pet.find(params[:id]).posts.build
+    @current_pets = current_owner.pets.map{ |p| [p.name, p.id] } 
   end
 
   private

@@ -28,4 +28,8 @@
       %ol.md:col-span-2.items-center
         = render @posts
 
-:javascript 
+:javascript
+
+  const showComments = (id) =>{
+    $("#comment-form-"+ id).toggle(500);
+  }
