@@ -5,5 +5,6 @@ class Owner < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :pets, dependent: :destroy
+  has_many :treats, dependent: :destroy
   has_one_attached :avatar
 end
