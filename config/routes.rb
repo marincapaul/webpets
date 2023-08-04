@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :treats, only: [:create, :destroy]
   end
 
   # Defines the root path route ("/")
