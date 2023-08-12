@@ -11,7 +11,7 @@
       %ul.flex.flex-col.md:items-center.py-2.mt-4.rounded-lg.border.md:flex-row.md:space-x-8.md:mt-0.md:text-sm.md:font-medium.md:border-0.bg-gray-800.md:bg-gray-900.border-gray-700
         - if owner_signed_in?
           %li
-            = link_to "Pets", "#", class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
+            = link_to "Pets", pets_path, class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
           %li
             = link_to "Sign out", destroy_owner_session_url, method: :delete, class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
           %li

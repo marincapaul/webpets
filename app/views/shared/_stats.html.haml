@@ -1,0 +1,9 @@
+%div.text-base.flex
+  %a{:href => "#{following_pet_path(@pet)}", class: "text-gray-400 hover:text-gray-300"}
+    %strong#following.block
+      = @pet.following.count
+    following
+  %a{:href => "#{followers_pet_path(@pet)}", class: "ml-4 border-l-2 border-gray-400 pl-2 text-gray-400 hover:text-gray-300"}
+    %strong#followers.block
+      = @pet.followers.count
+    followers

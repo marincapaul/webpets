@@ -14,8 +14,14 @@ Rails.application.routes.draw do
   end
 
 
-  resources :pets, only: [:new ,:show, :create, :destroy, :edit, :update]
+  resources :pets, only: [:new ,:show, :index, :create, :destroy, :edit, :update]
   resources :posts, only: [:new ,:show, :create, :destroy, :edit, :update]
+  resources :relationships, only: [:create, :destroy]
+  resources :pets do
+    member do
+      get :following, :followers
+    end
+  end
 
   resources :posts do
     resources :comments

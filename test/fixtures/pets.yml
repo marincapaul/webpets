@@ -1,3 +1,13 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+kira:
+  name: kira
+  species: cat
+  breed: black
+  age: 2
+  owner: ion
 
-
+mira:
+  name: Mira
+  species: cat
+  breed: black
+  age: 3
+  owner: dan

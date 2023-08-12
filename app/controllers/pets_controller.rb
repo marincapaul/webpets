@@ -1,7 +1,12 @@
 class PetsController < ApplicationController
-  before_action :logged_in_owner, only: [:show, :edit, :destroy, :update]
+  before_action :logged_in_owner, only: [:show, :index, :edit, :destroy, :update, 
+                                         :following, :followers]
   before_action :owned_pet, only: [:edit, :destroy, :update]\
   
+  def index 
+    @pets = Pet.all
+  end
+
   def create
     @pet = current_owner.pets.build(pet_params)
     if @pet.save
@@ -43,6 +48,20 @@ class PetsController < ApplicationController
     @posts = @pet.posts
     @new_post = Pet.find(params[:id]).posts.build
     @current_pets = current_owner.pets.map{ |p| [p.name, p.id] } 
+  end
+
+  def following
+    @title = "Following"
+    @pet = Pet.find(params[:id])
+    @pets = @pet.following
+    render "show_follow"
+  end
+  
+  def followers
+    @title = "Followers"
+    @pet = Pet.find(params[:id])
+    @pets = @pet.followers
+    render "show_follow"
   end
 
   private

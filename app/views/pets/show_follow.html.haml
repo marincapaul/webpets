@@ -1,3 +1,4 @@
+- provide(:title, @title)
 %section.bg-gray-900.min-h-screen
   .flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
     .grid.md:grid-cols-3.gap-8
@@ -7,13 +8,10 @@
             %h1.text-xl.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
               .items-center
                 - if @pet.avatar.present?
-                  %a{href: "#", "data-caption" => "Caption Profile Pic", "data-fancybox" => "gallery-profile"}
+                  %a{href: pet_path(pet), "data-caption" => "Caption Profile Pic"}
                     = image_tag @pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
                 - else
                   %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
-                %div.mt-2
-                  = render "follow"
-                  = render "unfollow"
                 .p-5
                   %h3.text-xl.font-bold.tracking-tight.text-white.test
                     = @pet.name
@@ -22,20 +20,14 @@
                   %span.text-gray-400.text-base= pluralize(@pet.age, 'year') + " old"
                 %div.pl-5
                   = render "shared/stats"
-            - if current_owner == @pet.owner
-              .grid.grid-cols-2.justify-items-center 
-                %div
-                  = link_to "edit", edit_pet_path(@pet), {class:"font-medium text-primary-500 hover:underline"}
-                %div.text-red-800.font-medium.hover:underline
-                  = link_to "delete", @pet, method: :delete, data: { confirm: "You sure?" }
-        - if current_owner == @pet.owner
-          =render "posts/post_form"
+                %div.flex.mt-4
+                  - @pets.each do |p|
+                    - if p .avatar.present?
+                      %a{href: pet_path(p), "data-caption" => "Caption Profile Pic"}
+                        = image_tag p.avatar, class: "mx-auto w-5 h-5 rounded-full border-gray-600" 
+                    - else
+                      %a{href: pet_path(p), "data-caption" => "Caption Profile Pic"}
+                        %img.h-5.w-5.rounded-full.border-gray-600{:src => image_path('dog_paw.png')}/
       %ol.md:col-span-2.items-center.md:overflow-x-auto.md:h-screen
-        = render @posts
-        .pb-20
-
-:javascript
-
-  const showComments = (id) =>{
-    $("#comment-form-"+ id).toggle(500);
-  }
+        %h3.text-white.text-2xl= @title
+        = render "pet_index"
