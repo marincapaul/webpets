@@ -1,10 +1,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
+    './components/**/*.{html,js}',
     './app/views/**/*.{erb,haml,html,slim}',
     './app/views/**/*.{erb,haml,html,slim}',
     'flowbite/**/*.js',
