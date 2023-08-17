@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     
   end
 
+  post "/", to: "pages#home"
 
   resources :pets, only: [:new ,:show, :index, :create, :destroy, :edit, :update]
   resources :posts, only: [:new ,:show, :create, :destroy, :edit, :update]

@@ -1,0 +1,11 @@
+.flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
+  .w-full.rounded-lg.shadow.md:mt-0.sm:max-w-lg.xl:p-0
+    = turbo_frame_tag :posts do
+      = render @feed_items
+    #pager.min-w-full.my-8.flex.justify-between
+      %div
+        - if @pagy.prev
+          = link_to "< Previous page", root_path(page: @pagy.prev), class: "rounded py-3 px-5 bg-gray-600 text-white block hover:bg-gray-800"
+      .text-right
+        - if @pagy.next
+          = link_to "Next page >", root_path(page: @pagy.next), class: "rounded py-3 px-5 bg-gray-600 text-white block hover:bg-gray-800"

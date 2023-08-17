@@ -21,6 +21,13 @@ class Pet < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
 
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                         WHERE follower_id = :pet_id"
+    Post.where("pet_id IN (#{following_ids}) 
+                    OR pet_id = :pet_id", pet_id: id)
+  end
+
   # Follows a pet.
   def follow(other_pet)
     following << other_pet
