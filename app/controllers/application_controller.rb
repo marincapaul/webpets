@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
+  
+  include Pagy::Backend
+
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :turbo_frame_request_variant
 
   protected
   def configure_permitted_parameters
@@ -7,7 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name] )
  end
 
- private
+  private
+
+  def turbo_frame_request_variant
+    request.variant = :turbo_frame if turbo_frame_request?
+  end
+
   def logged_in_owner
     unless !current_owner.nil?
       flash[:danger] = "Please log in."

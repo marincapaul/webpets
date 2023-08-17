@@ -1,4 +1,4 @@
-%nav.bg-gray-900.border-gray-900.px-6.sm:px-4{:class => "py-2.5"}
+%nav.bg-gray-900.border-gray-900.px-6.sm:px-4.overflow-visible.sticky.top-0.z-40{:class => "py-2.5"}
   .container.flex.flex-wrap.justify-between.items-center.mx-auto
     %a.flex.items-center.lg:pl-0.pl-2{:href => root_path}
       %img.mr-3.h-14.md:h-9{:alt => "WebPets Logo", :src => image_path("logo.png")}/
@@ -11,11 +11,13 @@
       %ul.flex.flex-col.md:items-center.py-2.mt-4.rounded-lg.border.md:flex-row.md:space-x-8.md:mt-0.md:text-sm.md:font-medium.md:border-0.bg-gray-800.md:bg-gray-900.border-gray-700
         - if owner_signed_in?
           %li
+            = link_to "Explore!", "#", class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
+          %li
             = link_to "Pets", pets_path, class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
           %li
-            = link_to "Sign out", destroy_owner_session_url, method: :delete, class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
-          %li
             = link_to "Account", owner_path(current_owner), class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
+          %li
+            = link_to "Sign out", destroy_owner_session_url, method: :delete, class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"
         - else 
           %li
             = link_to "Sign in", new_owner_session_url, class:"block py-2 pr-4 pl-3 rounded md:border-0 md:p-0 text-gray-400 hover:text-white hover:bg-gray-700 hover:text-white hover:bg-transparent"

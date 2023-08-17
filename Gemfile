@@ -31,6 +31,9 @@ gem 'devise'
 gem 'activeadmin'
 gem 'active_storage_validations'
 
+#pagination
+gem 'pagy'
+
 # S3 for file uploads
 gem 'aws-sdk-s3'
 
@@ -39,6 +42,8 @@ gem 'tailwindcss-rails'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+
+gem 'turbo-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"

@@ -1,3 +1,4 @@
 web: bin/rails server -p 3000
 webpack: bin/webpack-dev-server
 css: bin/rails tailwindcss:watch
+browser_sync: browser-sync start --config bs-config.js --port 3001 --reload-delay 500 --no-open --files "app/views/**"
