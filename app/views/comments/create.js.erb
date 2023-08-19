@@ -1,0 +1,2 @@
+$("#comment-form-<%= @comment.post.id%>").html("<%= j(render('posts/comment_section', post: @comment.post)) %>");
+$("#nr_comments_<%= @comment.post.id %>").html("<%= @comment.post.comments.count%>")

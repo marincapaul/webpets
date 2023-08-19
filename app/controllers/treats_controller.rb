@@ -5,7 +5,8 @@ class TreatsController < ApplicationController
     @treat = @post.treats.new(treat_params)
     respond_to do |format|
       if @treat.save
-        format.html { redirect_to @post.pet, notice: 'You gave a treat!' } # changed the redirect to @post
+        format.html { redirect_to @post.pet } # changed the redirect to @post
+        format.js
       else 
         format.html { redirect_to @post.pet, notice: 'There was a problem giving treats.' } # changed the redirect to @post
       end
@@ -19,6 +20,7 @@ class TreatsController < ApplicationController
     respond_to do |format|
       if @treat.destroy
         format.html { redirect_to @post.pet, notice: 'Treat was successfully removed.' }
+        format.js
       else
         format.html { redirect_to @post.pet, alert: 'There was a problem removing the treat.' }
       end

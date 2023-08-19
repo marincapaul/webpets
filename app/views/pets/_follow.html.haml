@@ -10,7 +10,7 @@
       - next if cp.following?(@pet)
       %li
         .block.py-2.hover:bg-gray-600.hover:text-white
-          = form_with(model: cp.active_relationships.build) do |f|
+          = form_with(model: cp.active_relationships.build,  data: { remote: true }) do |f|
             %div= hidden_field_tag :followed_id, @pet.id
             %div= hidden_field_tag :follower_id, cp.id
             = f.submit "As #{cp.name}", class: "px-4 pr-10", role: "button"
