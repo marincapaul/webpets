@@ -11,7 +11,7 @@
                     = image_tag @pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
                 - else
                   %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
-                %div.mt-2
+                %div#follow_form.mt-2
                   = render "follow"
                   = render "unfollow"
                 .p-5
@@ -30,7 +30,7 @@
                   = link_to "delete", @pet, method: :delete, data: { confirm: "You sure?" }
         - if current_owner == @pet.owner
           =render "posts/post_form"
-      %div.md:col-span-2.items-center.md:overflow-x-auto.h-screen.max-w-lg
+      %div.md:col-span-2.items-center.md:overflow-x-auto.md:h-screen.max-w-lg
         = render @posts
         #pager.min-w-full.my-8.flex.justify-between
           %div

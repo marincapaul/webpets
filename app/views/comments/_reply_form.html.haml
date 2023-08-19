@@ -1,5 +1,5 @@
 .ml-5.text-lg
-  = form_with(model: [@post, @comment]) do |f|
+  = form_with(model: [@post, @comment], data: {remote: true} ) do |f|
     = f.hidden_field :parent_id, value: params[:parent_id]
     .form-group
       = f.text_area :body,placeholder: "Write a reply!", class: 'border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'

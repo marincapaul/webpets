@@ -10,5 +10,5 @@
       - next unless cp.following?(@pet)
       %li
         .block.py-2.hover:bg-gray-600.hover:text-white
-          = form_with(model: cp.active_relationships.find_by(followed_id: @pet.id), html: { method: :delete }) do |f|
+          = form_with(model: cp.active_relationships.find_by(followed_id: @pet.id), html: { method: :delete }, data: { remote: true } ) do |f|
             = f.submit "As #{cp.name}", class: "px-4 pr-10", role: "button"
