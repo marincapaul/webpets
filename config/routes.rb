@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   post "/", to: "pages#home"
+  post "select_pet", to: "sessions#create", as: :select_pet
 
   resources :pets, only: [:new ,:show, :index, :create, :destroy, :edit, :update]
   resources :posts, only: [:new ,:show, :create, :destroy, :edit, :update]

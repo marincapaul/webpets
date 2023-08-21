@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+  include SessionsHelper
   include Pagy::Backend
 
   before_action :configure_permitted_parameters, if: :devise_controller?
