@@ -1,10 +1,10 @@
-%button.text-white.focus:ring-4.focus:outline-none.font-medium.rounded-lg.text-sm.px-3.text-center.inline-flex.items-center.dfocus:ring-blue-800{:class => "py-1.5 !bg-blue-800 hover:!bg-blue-900", "data-dropdown-toggle" => "dropdown-unfollow", :type => "button"}
+%button#dropdownUnfollowButton.text-white.focus:ring-4.focus:outline-none.font-medium.rounded-lg.text-sm.px-3.text-center.inline-flex.items-center.dfocus:ring-blue-800{:class => "py-1.5 !bg-blue-800 hover:!bg-blue-900", "data-dropdown-toggle" => "dropdown-unfollow", :type => "button"}
   Unfollow
   %svg{"aria-hidden" => "true", :class => "w-2.5 h-2.5 ml-2.5", :fill => "none", :viewbox => "0 0 10 6", :xmlns => "http://www.w3.org/2000/svg"}
     %path{:d => "m1 1 4 4 4-4", :stroke => "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
 / Dropdown menu
 #dropdown-unfollow.z-10.hidden.divide-y.divide-gray-100.rounded-lg.shadow.w-32.bg-gray-700
-  %ul.py-2.text-sm.text-gray-200{"aria-labelledby" => "dropdownDefaultButton"}
+  %ul.py-2.text-sm.text-gray-200{"aria-labelledby" => "dropdownUnfollowButton"}
     - current_owner.pets.each do |cp|
       - next if cp == @pet
       - next unless cp.following?(@pet)
@@ -12,3 +12,10 @@
         .block.py-2.hover:bg-gray-600.hover:text-white
           = form_with(model: cp.active_relationships.find_by(followed_id: @pet.id), html: { method: :delete }, data: { remote: true } ) do |f|
             = f.submit "As #{cp.name}", class: "px-4 pr-10", role: "button"
+
+
+:javascript
+
+  $(document).on('turbolinks:load', function() {
+    //$('#dropdownUnfollowButton').attr('data-dropdown-toggle', 'dropdown');
+  })

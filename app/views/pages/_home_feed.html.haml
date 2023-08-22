@@ -1,5 +1,5 @@
 .flex.justify-center.px-4.py-8.mx-auto.lg:py-0
-  %aside.w-max.mr-8.md:top-16.top-24.h-min.bg-gray-800.rounded-full.lg:rounded-lg.top-0.sticky.border-gray-700.lg:border
+  %aside.w-max.mr-8.md:top-16.top-24.h-min.bg-gray-800.rounded-full.lg:rounded-lg.sticky.border-gray-700.lg:border
     %div.lg:w-36.py-2.md:overflow-y-auto
       - current_owner.pets.each do |p|
         = form_with(url: select_pet_path, scope: :session, local: true) do |f|
@@ -21,3 +21,6 @@
       .text-right
         - if @pagy.next
           = link_to "Next page >", root_path(page: @pagy.next), class: "rounded py-3 px-5 bg-gray-600 text-white block hover:bg-gray-800"
+  .top-16.sticky.bg-gray-800.w-44.h-44.ml-8.rounded-lg.border-gray-700.border
+    %button.flex.items-center.text-xl.mb-1.font-bold.w-full.hover:bg-gray-600.rounded-lg{class: "#{@pet==p ? "lg:bg-sky-600 lg:hover:bg-sky-700" : ""}"}
+      %span.hidden.lg:inline-block top
