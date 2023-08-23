@@ -16,11 +16,13 @@
                     %h3.text-xl.font-bold.tracking-tight.text-white.test
                       = @pet.name
                       %span.text-base.italic.text-gray-400="(" + @pet.species + ")"
-                    %span.text-gray-400.text-lg= @pet.breed+ ' |'
+                    %span.text-gray-400.text-lg= @pet.breed + ' |'
                     %span.text-gray-400.text-base= pluralize(@pet.age, 'year') + " old"
                     %br/
-                    %span.text-gray-400.text-lg= @pet.gender+ ' |'
-                    %span.text-gray-400.text-base= @pet.color
+                    - unless @pet.gender.nil?
+                      %span.text-gray-400.text-lg= @pet.gender + ' |'
+                    - unless @pet.color.nil?
+                      %span.text-gray-400.text-base= @pet.color
                 %div#follow_form.mt-2
                   = render "follow"
                   = render "unfollow"

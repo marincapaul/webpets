@@ -24,6 +24,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def has_pets
+    if !current_owner.pets.present?
+      flash[:danger] = "Please add a pet first to have access to this part of the app."
+      redirect_to root_path
+    end
+  end
+
   def correct_owner
     @owner = Owner.find(params[:id])
     redirect_to(root_url) unless current_user?(@owner)

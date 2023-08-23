@@ -1,7 +1,9 @@
 %section.bg-gray-900.min-h-screen.text-white
   - if owner_signed_in?
-    = render "home_feed"
-        
+    - if current_owner.pets.present?
+      = render "home_feed"
+    - else
+      = render "empty_feed"
   - else
     = link_to "sign in", new_owner_session_url
 

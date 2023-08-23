@@ -2,6 +2,8 @@ class Pet < ApplicationRecord
   belongs_to :owner
 
   has_one_attached :avatar
+  has_many_attached :docs
+  enum gender: { male: 0, female: 1, other: 2 }
   has_many :posts, dependent: :destroy
   has_many :comments
   has_many :active_relationships, class_name: "Relationship",
@@ -28,7 +30,7 @@ class Pet < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
 
-  enum gender: {male: 0, female: 1, other: 2}
+  
 
   def feed
     following_ids = "SELECT followed_id FROM relationships

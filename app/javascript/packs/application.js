@@ -11,13 +11,17 @@ require("jquery")
 
 import "flowbite"
 
-
+// import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
+// import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+// window.addEventListener('turbolinks:load', () => {
+//     Fancybox.bind('[data-fancybox="gallery"]');
+// });
 
 // const application = Application.start()
 // const context = require.context("controllers", true, /.js$/)
