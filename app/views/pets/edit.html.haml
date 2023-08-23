@@ -1,36 +1,54 @@
 %section.bg-gray-900.min-h-screen
   .flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
-    .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-lg.xl:p-0.bg-gray-800.border-gray-700
+    .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-3xl.xl:p-0.bg-gray-800.border-gray-700
       .p-6.space-y-4.md:space-y-6.sm:p-8
         %h1.text-xl.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
           Edit Pet
         = form_for(@pet) do |f|
           = render "devise/shared/error_messages", resource: @pet
-          .field.block.mb-2.text-sm.font-medium.text-white
-            = f.label :avatar, "Profile Photo"
-            %div.image-icon
-              - if @pet.avatar.present?
-                = image_tag @pet.avatar, class: "img-fluid img-thumbnail w-20 h-20 rounded-full object-cover", style: 'max-width: 25%', id: "imgNew"
-              - else 
-                %img#imgNew.img-fluid.img-thumbnail.w-20.h-20.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
-            = f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', value: @pet.avatar, id:"imgInp", onchange: "previewImg(event)"
+          .grid.grid-cols-2.gap-2
+            .field.block.mb-2.text-sm.font-medium.text-white
+              = f.label :avatar, "Profile Photo"
+              %div.image-icon
+                - if @pet.avatar.present? 
+                  = image_tag @pet.avatar, class: "img-fluid img-thumbnail w-20 h-20 rounded-full object-cover", style: 'max-width: 25%', id: "imgNew"
+                - else 
+                  %img#imgNew.img-fluid.img-thumbnail.w-20.h-20.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
+              = f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', value: @pet.avatar, id:"imgInp", onchange: "previewImg(event)"
+            .field.block.mb-2.text-sm.font-medium.text-white
+              = f.label :docs, "Legal photos"
+              %div.image-icon
+                - if @pet.docs.present?
+                  = image_tag @pet.docs.first, class: "img-fluid img-thumbnail w-20 h-20 rounded-full object-cover", style: 'max-width: 25%', id: "imgNew"
+                - else
+                  %img#docsNew.img-fluid.img-thumbnail.w-20.h-20.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
+              = f.file_field :docs, multiple: true,value: @pet.docs, accept: 'image/png,image/gif,image/jpeg', value: @pet.docs, onchange: "previewDocs(event)"
 
-          .field
-            .block.mb-2.text-sm.font-medium.text-white
-              = f.label :name
-              = f.text_field :name, autofocus: true,  required: true, autocomplete: "name", placeholder: "name", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-          .field
-            .block.mb-2.text-sm.font-medium.text-white
-              = f.label :species 
-              = f.text_field :species,required: true, :placeholder => "cat/dog/iguana/...", autocomplete: "species", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-          .field
-            .block.mb-2.text-sm.font-medium.text-white
-              = f.label :breed
-              = f.text_field :breed, autofocus: true, autocomplete: "breed", placeholder: "golden retriever/black cat/-/...", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-          .field
-            .block.mb-2.text-sm.font-medium.text-white
-              = f.label :age, "Age (years)"
-              = f.number_field :age, autofocus: true, autocomplete: "age", min:"0", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            .field
+              .block.mb-2.text-sm.font-medium.text-white
+                = f.label :name
+                = f.text_field :name, autofocus: true,  required: true, autocomplete: "name", placeholder: "name", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            .field
+              .block.mb-2.text-sm.font-medium.text-white
+                = f.label :gender, "Sex" 
+                = f.select :gender, @genders, { }, { class: 'border sm:text-base rounded-lg block w-full p-1.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500' }
+
+            .field
+              .block.mb-2.text-sm.font-medium.text-white
+                = f.label :species 
+                = f.text_field :species,required: true, :placeholder => "cat/dog/iguana/...", autocomplete: "species", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            .field
+              .block.mb-2.text-sm.font-medium.text-white
+                = f.label :breed
+                = f.text_field :breed, autofocus: true, autocomplete: "breed", placeholder: "golden retriever/black cat/-/...", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            .field
+              .block.mb-2.text-sm.font-medium.text-white
+                = f.label :color 
+                = f.text_field :color, :placeholder => "brown/black and white/...", autocomplete: "species", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            .field
+              .block.mb-2.text-sm.font-medium.text-white
+                = f.label :age, "Age (years)"
+                = f.number_field :age, autofocus: true, autocomplete: "age", min:"0", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
 
           %br/
           .actions
@@ -41,4 +59,8 @@
 
   const previewImg = (event) => {
     imgNew.src = URL.createObjectURL(event.target.files[0]);
+  }
+
+  const previewDocs = (event) => {
+    docsNew.src = URL.createObjectURL(event.target.files[0]);
   }

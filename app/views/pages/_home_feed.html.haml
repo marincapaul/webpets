@@ -13,7 +13,11 @@
             = f.submit ""
   .w-full.rounded-lg.shadow.mt-2.inline-block.sm:max-w-lg.xl:p-0
     = turbo_frame_tag :posts do
-      = render @feed_items
+      - if @feed_items.present?
+        = render @feed_items
+      - else
+        %h3.text-xl Explore the app and try following other pets!
+
     #pager.min-w-full.my-8.flex.justify-between
       %div
         - if @pagy.prev

@@ -17,16 +17,6 @@
             .block.mb-2.text-sm.font-medium.text-white
               = f.label :password 
               = f.password_field :password, :placeholder => "••••••••", autocomplete: "current-password", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-          - if devise_mapping.rememberable?
-            .field
-              .flex.items-center.justify-between
-                .flex.items-start
-                  .flex.items-center.h-5
-                    = f.check_box :remember_me, class: 'w-4 h-4 border rounded focus:ring-3 bg-gray-700 text-white border-gray-600 focus:ring-primary-600 ring-offset-gray-800'
-                    .ml-3.text-sm.text-white
-                      = f.label :remember_me
-                .text-sm.font-medium.text-white
-                  = link_to "Forgot your password?", new_password_path(resource_name), {class: "hover:underlinde text-sm font-medium text-primary-500"}
           %br/
           .actions
             %button.btn.w-full.text-white.focus:ring-4.focus:outline-none.font-medium.rounded-lg.text-sm.px-5.text-center.bg-primary-600.hover:bg-primary-700.focus:ring-primary-800

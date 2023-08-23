@@ -1,10 +1,11 @@
 class PetsController < ApplicationController
   before_action :logged_in_owner, only: [:show, :index, :edit, :destroy, :update, 
-                                         :following, :followers]
-  before_action :owned_pet, only: [:edit, :destroy, :update]\
+                                         :following, :followers, :requesting, :requesters]
+  before_action :owned_pet, only: [:edit, :destroy, :update, :requesting, :requesters]
+  before_action :has_pets, only: [:index]
   
   def index 
-  @pets = Pet.all.where.not(owner_id: current_owner.id)
+    @pets = Pet.all.where.not(owner_id: current_owner.id)
   end
 
   def create
@@ -20,7 +21,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = current_owner.pets.build if owner_signed_in?
-    @genders = Pet.genders.map { |key, val| [key.titleize, val] }
+    @genders = Pet.genders.keys.map { |key| [key.titleize, key] }
   end
 
   def destroy
@@ -31,6 +32,7 @@ class PetsController < ApplicationController
 
   def edit
     @pet = Pet.find(params[:id])
+    @genders = Pet.genders.keys.map { |key| [key.titleize, key] }
   end
 
   def update
@@ -82,7 +84,7 @@ class PetsController < ApplicationController
 
   private
     def pet_params
-      params.require(:pet).permit(:name, :species, :breed, :age, :avatar)
+      params.require(:pet).permit(:name, :species, :breed, :age, :avatar, :gender, :color, docs: [] )
     end
 
     def owned_pet
