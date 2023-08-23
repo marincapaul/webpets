@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_140554) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_22_145740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -101,6 +101,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_140554) do
     t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gender"
+    t.string "description"
+    t.string "color"
     t.index ["owner_id"], name: "index_pets_on_owner_id"
   end
 
@@ -121,6 +124,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_140554) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "status"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "treats", force: :cascade do |t|

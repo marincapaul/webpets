@@ -14,13 +14,16 @@ Rails.application.routes.draw do
   end
 
   post "/", to: "pages#home"
+  post "select_pet", to: "sessions#create", as: :select_pet
 
   resources :pets, only: [:new ,:show, :index, :create, :destroy, :edit, :update]
   resources :posts, only: [:new ,:show, :create, :destroy, :edit, :update]
   resources :relationships, only: [:create, :destroy]
+  resources :requests, only: [:create, :destroy, :update]
   resources :pets do
     member do
       get :following, :followers
+      get :requesting, :requesters
     end
   end
 
@@ -28,10 +31,5 @@ Rails.application.routes.draw do
     resources :comments
     resources :treats, only: [:create, :destroy]
   end
-
-  # Defines the root path route ("/")
-  # root "articles#index"
   
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
