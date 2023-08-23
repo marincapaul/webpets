@@ -5,6 +5,7 @@ class PagesController < ApplicationController
       @current_pets = current_owner.pets.map{ |p| [p.name, p.id] } 
       unless @pet.present?
         @pet = current_owner.pets.first
+        select_pet(@pet)
       end
       
       @pagy, @feed_items = pagy_countless(@pet.feed, items: 8)

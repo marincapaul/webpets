@@ -13,4 +13,15 @@ class PetTest < ActiveSupport::TestCase
     assert_not kira.following?(mira)
   end
   
+  test "should request mating with another pet" do
+    kira = pets(:kira)
+    mira = pets(:mira)
+    assert_not kira.requesting?(mira)
+    kira.request(mira)
+    assert kira.requesting?(mira)
+    assert mira.requesters.include?(kira)
+    kira.unrequest(mira)
+    assert_not kira.requesting?(mira)
+  end
+
 end

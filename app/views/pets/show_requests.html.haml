@@ -1,0 +1,42 @@
+- provide(:title, @title)
+%section.bg-gray-900.min-h-screen
+  .flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
+    %h3.text-white.text-4xl.text-center.py-5= @title
+    %p= link_to "view sending requests", requesting_pet_path(@pet), {class:"font-medium text-xl text-primary-500 hover:underline"}
+    .w-full.rounded-lg.shadow.md:mt-0.sm:max-w-5xl.xl:p-0
+      .grid.gap-8.px-4.py-6.lg:py-10.md:grid-cols-2
+        - @requests.each do |req|
+          .rounded-lg.shadow.bg-gray-800.border-gray-700.flex.pt-2.pl-2
+            .items-center.max-w-md.my-2
+              - if req.sender.avatar.present?
+                %a{href: pet_path(req.sender), "data-caption" => "Caption Profile Pic", "data-fancybox" => "gallery-profile"}
+                  = image_tag req.sender.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
+              - else
+                %a{:href => pet_path(req.sender)}
+                  %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
+              - if req.status == "pending"
+                %p.text-center.text-white.bg-gray-500.rounded.mt-2 Pending
+              - else 
+                %p.text-center.text-white.bg-blue-700.rounded.mt-2 Accepted
+              .p-5
+                %h3.text-xl.font-bold.tracking-tight.text-white
+                  %a{:href =>pet_path(req.sender.id)}= req.sender.name
+                  %span.text-base.italic.text-gray-400.w-10="(" + req.sender.species + ")"
+                  %a{:href => owner_path(req.sender.owner), class:"text-sm border-l-2 pl-2"}= req.sender.owner.first_name
+            %div.text-white.flex.flex-col
+              %p
+                = req.description
+              %div.flex.place-self-end.mt-10
+                - if req.status == "pending"
+                  = form_with(model: req.sender.active_requests.find_by(receiver_id: @pet.id), html: { method: :put }, local: true) do |f| 
+                    = f.hidden_field :receiver_id, value: req.receiver_id
+                    = f.hidden_field :sender_id, value: req.sender_id
+                    = f.hidden_field :status, value: 1
+                    .flex.items-center.justify-center.mx-4
+                      %button.rounded.bg-blue-600.text-white.block.hover:bg-blue-800
+                        = f.submit "Accept", class: "btn py-3 px-2", role: "button"
+                = form_with(model: req.sender.active_requests.find_by(receiver_id: @pet.id), html: { method: :delete }, local: true) do |f| 
+                  .flex.items-center.justify-center
+                    %button.rounded.bg-gray-600.text-white.block.hover:bg-red-800.mx-4
+                      = f.submit "Decline", class: "btn py-3 px-2", role: "button"
+          

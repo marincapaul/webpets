@@ -1,0 +1,6 @@
+- unless current_owner==@pet.owner
+  %div#request_form
+    - if current_selected.requesting?(@pet)
+      = render "unrequest"
+    - else 
+      = render "request"

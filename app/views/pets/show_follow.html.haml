@@ -8,7 +8,7 @@
             %h1.text-xl.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
               .items-center
                 - if @pet.avatar.present?
-                  %a{href: pet_path(pet), "data-caption" => "Caption Profile Pic"}
+                  %a{href: pet_path(@pet), "data-caption" => "Caption Profile Pic"}
                     = image_tag @pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
                 - else
                   %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/

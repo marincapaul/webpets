@@ -13,6 +13,14 @@ class Pet < ApplicationRecord
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :active_requests, class_name: "Request",
+                            foreign_key: "sender_id",
+                            dependent: :destroy
+  has_many :passive_requests, class_name: "Request",
+                            foreign_key: "receiver_id",
+                            dependent: :destroy
+  has_many :requesting, through: :active_requests, source: :receiver
+  has_many :requesters, through: :passive_requests, source: :sender
 
   validates :owner_id, presence: true
   validates :name, presence: true
@@ -20,6 +28,7 @@ class Pet < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
 
+  enum gender: {male: 0, female: 1, other: 2}
 
   def feed
     following_ids = "SELECT followed_id FROM relationships
@@ -41,6 +50,18 @@ class Pet < ApplicationRecord
   # Returns true if the current pet is following the other pet.
   def following?(other_pet)
     following.include?(other_pet)
+  end
+
+  def request(other_pet)
+    requesting << other_pet
+  end
+
+  def unrequest(other_pet)
+    requesting.delete(other_pet)
+  end
+
+  def requesting?(other_pet)
+    requesting.include?(other_pet)
   end
 
 end

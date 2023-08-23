@@ -1,33 +1,41 @@
 %section.bg-gray-900.min-h-screen
-  .flex.flex-col.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
+  .flex.flex-row.items-center.justify-center.px-4.py-8.mx-auto.lg:py-0
     .grid.md:grid-cols-3.gap-8
       %div.md:col-span-1
         .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-lg.xl:p-0.bg-gray-800.border-gray-700.mb-4
           .p-6.space-y-4.md:space-y-6.sm:p-8
             %h1.text-xl.font-bold.leading-tight.tracking-tight.md:text-2xl.text-white
               .items-center
-                - if @pet.avatar.present?
-                  %a{href: "#", "data-caption" => "Caption Profile Pic", "data-fancybox" => "gallery-profile"}
-                    = image_tag @pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
-                - else
-                  %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
+                .flex.items-center
+                  - if @pet.avatar.present?
+                    %a{href: "#", "data-caption" => "Caption Profile Pic", "data-fancybox" => "gallery-profile"}
+                      = image_tag @pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
+                  - else
+                    %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
+                  .div.ml-4
+                    %h3.text-xl.font-bold.tracking-tight.text-white.test
+                      = @pet.name
+                      %span.text-base.italic.text-gray-400="(" + @pet.species + ")"
+                    %span.text-gray-400.text-lg= @pet.breed+ ' |'
+                    %span.text-gray-400.text-base= pluralize(@pet.age, 'year') + " old"
+                    %br/
+                    %span.text-gray-400.text-lg= @pet.gender+ ' |'
+                    %span.text-gray-400.text-base= @pet.color
                 %div#follow_form.mt-2
                   = render "follow"
                   = render "unfollow"
-                .p-5
-                  %h3.text-xl.font-bold.tracking-tight.text-white.test
-                    = @pet.name
-                    %span.text-base.italic.text-gray-400="(" + @pet.species + ")"
-                  %span.text-gray-400.text-lg= @pet.breed+ ' |'
-                  %span.text-gray-400.text-base= pluralize(@pet.age, 'year') + " old"
-                %div.pl-5
+                %div.pl-5.pt-4
                   = render "shared/stats"
             - if current_owner == @pet.owner
-              .grid.grid-cols-2.justify-items-center 
+              .grid.grid-cols-3.justify-items-center 
+                %div 
+                  = link_to "requests", requesters_pet_path(@pet), {class:"font-medium text-primary-500 hover:underline"}
                 %div
                   = link_to "edit", edit_pet_path(@pet), {class:"font-medium text-primary-500 hover:underline"}
                 %div.text-red-800.font-medium.hover:underline
                   = link_to "delete", @pet, method: :delete, data: { confirm: "You sure?" }
+            - else
+              = render "request_form"
         - if current_owner == @pet.owner
           =render "posts/post_form"
       %div.md:col-span-2.items-center.md:overflow-x-auto.md:h-screen.max-w-lg

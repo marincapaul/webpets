@@ -20,6 +20,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = current_owner.pets.build if owner_signed_in?
+    @genders = Pet.genders.map { |key, val| [key.titleize, val] }
   end
 
   def destroy
@@ -63,6 +64,21 @@ class PetsController < ApplicationController
     @pets = @pet.followers
     render "show_follow"
   end
+
+  def requesters
+    @title = "Receiving requests"
+    @pet = Pet.find(params[:id])
+    @requests = @pet.passive_requests
+    render "show_requests"
+  end
+
+  def requesting
+    @title = "Sended requests"
+    @pet = Pet.find(params[:id])
+    @requests = @pet.active_requests
+    render "show_requesting"
+  end
+
 
   private
     def pet_params

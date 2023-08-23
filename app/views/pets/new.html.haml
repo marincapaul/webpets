@@ -12,12 +12,21 @@
               = f.text_field :name, autofocus: true,  required: true, autocomplete: "name", placeholder: "name", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
           .field
             .block.mb-2.text-sm.font-medium.text-white
+              = f.label :gender, "Sex" 
+              = f.select :gender, @genders, { include_blank: "<select>"  }, { class: 'border sm:text-base rounded-lg block w-full p-1.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500' }
+
+          .field
+            .block.mb-2.text-sm.font-medium.text-white
               = f.label :species 
               = f.text_field :species,required: true, :placeholder => "cat/dog/iguana/...", autocomplete: "species", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
           .field
             .block.mb-2.text-sm.font-medium.text-white
               = f.label :breed
-              = f.text_field :breed, autofocus: true, autocomplete: "breed", placeholder: "golden retriever/black cat/-/...", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              = f.text_field :breed, autofocus: true, autocomplete: "breed", placeholder: "golden retriever/russian blue/...", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+          .field
+            .block.mb-2.text-sm.font-medium.text-white
+              = f.label :color 
+              = f.text_field :color, :placeholder => "brown/black and white/...", autocomplete: "species", class: "border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
           .field
             .block.mb-2.text-sm.font-medium.text-white
               = f.label :age, "Age (years)"
