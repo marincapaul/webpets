@@ -11,7 +11,7 @@
                   %a{href: pet_path(@pet), "data-caption" => "Caption Profile Pic"}
                     = image_tag @pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
                 - else
-                  %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
+                  %img.h-24.w-24.rounded-full.border-gray-600.bg-white.border-4{:src => image_path('dog_paw.png')}/
                 .p-5
                   %h3.text-xl.font-bold.tracking-tight.text-white.test
                     = @pet.name
@@ -20,14 +20,14 @@
                   %span.text-gray-400.text-base= pluralize(@pet.age, 'year') + " old"
                 %div.pl-5
                   = render "shared/stats"
-                %div.flex.mt-4
+                %div.flex.flex-wrap.mt-4
                   - @pets.each do |p|
-                    - if p .avatar.present?
+                    - if p.avatar.present?
                       %a{href: pet_path(p), "data-caption" => "Caption Profile Pic"}
-                        = image_tag p.avatar, class: "mx-auto w-5 h-5 rounded-full border-gray-600" 
+                        = image_tag p.avatar, class: "m-1 w-5 h-5 rounded-full border-gray-600" 
                     - else
                       %a{href: pet_path(p), "data-caption" => "Caption Profile Pic"}
-                        %img.h-5.w-5.rounded-full.border-gray-600{:src => image_path('dog_paw.png')}/
+                        %img.h-5.w-5.rounded-full.m-1.bg-white.border-gray-600{:src => image_path('dog_paw.png')}/
       %ol.md:col-span-2.items-center.md:overflow-x-auto.md:h-screen
         %h3.text-white.text-2xl= @title
         = render "pet_index"

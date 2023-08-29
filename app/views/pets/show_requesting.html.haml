@@ -14,7 +14,7 @@
                     = image_tag req.receiver.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
                 - else
                   %a{:href => pet_path(req.receiver)}
-                    %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
+                    %img.h-24.w-24.rounded-full.border-gray-600.bg-white.border-4{:src => image_path('dog_paw.png')}/
                 - if req.status == "pending"
                   %p.text-center.text-white.bg-gray-500.rounded.mt-2 Pending
                 - else 

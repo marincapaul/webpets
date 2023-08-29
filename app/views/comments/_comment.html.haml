@@ -4,7 +4,7 @@
       -if comment.pet.avatar.present?
         = image_tag comment.pet.avatar, class: "img-thumbnail w-4 h-4 rounded-full object-cover", id: "imgNew"
       - else 
-        %img#imgNew.img-fluid.img-thumbnail.w-4.h-4.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
+        %img#imgNew.img-fluid.img-thumbnail.w-4.h-4.bg-white.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
       .italic.text-sm.ml-1
         = link_to comment.pet.name, comment.pet
     %div.flex.items-center.ml-1

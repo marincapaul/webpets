@@ -9,7 +9,7 @@ class PagesController < ApplicationController
           select_pet(@pet)
         end
         
-        @pagy, @feed_items = pagy_countless(@pet.feed, items: 8)
+        @pagy, @feed_items = pagy_countless(@pet.feed, items: 10)
       end
     else 
       redirect_to new_owner_session_url

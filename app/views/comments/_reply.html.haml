@@ -3,7 +3,7 @@
     -if reply.pet.avatar.present?
       = image_tag reply.pet.avatar, class: "img-thumbnail w-4 h-4 rounded-full object-cover", id: "imgNew"
     - else 
-      %img#imgNew.img-fluid.img-thumbnail.w-4.h-4.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
+      %img#imgNew.img-fluid.img-thumbnail.w-4.h-4.bg-white.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
     .italic.text-sm.ml-1
       = link_to reply.pet.name, reply.pet
   = reply.body

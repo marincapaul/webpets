@@ -1,16 +1,15 @@
 - @pets.each do |pet|
-  .items-center.rounded-lg.shadow.sm:flex.bg-gray-800.border-gray-700.max-w-md.my-2
+  .items-center.rounded-lg.shadow.flex.bg-gray-800.border-gray-700.max-w-md.my-2
     - if pet.avatar.present?
       %a{href: pet_path(pet), "data-caption" => "Caption Profile Pic", "data-fancybox" => "gallery-profile"}
         = image_tag pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
     - else
       %a{:href => pet_path(pet)}
-        %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
+        %img.h-24.w-24.rounded-full.border-gray-600.bg-white.border-4{:src => image_path('dog_paw.png')}/
     .p-5
       %h3.text-xl.font-bold.tracking-tight.text-white
         %a{:href => pet_path(pet.id)}= pet.name
         %span.text-base.italic.text-gray-400.w-10="(" + pet.species + ")"
         %a{:href => owner_path(pet.owner), class:"text-sm border-l-2 pl-2"}= pet.owner.first_name
       %span.text-gray-400= pet.breed
-
-
+  

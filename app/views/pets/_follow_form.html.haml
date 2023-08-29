@@ -1,0 +1,6 @@
+- unless current_owner==@pet.owner
+  %div
+    - if current_selected.following?(@pet)
+      = render "unfollow"
+    - else 
+      = render "follow"

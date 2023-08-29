@@ -1,14 +1,14 @@
 .flex.justify-center.px-4.py-8.mx-auto.lg:py-0
   %aside.w-max.mr-8.md:top-16.top-24.h-min.bg-gray-800.rounded-full.lg:rounded-lg.sticky.border-gray-700.lg:border
-    %div.lg:w-36.py-2.md:overflow-y-auto
+    %div.lg:w-36.py-2.md:overflow-y-auto.w-8
       - current_owner.pets.each do |p|
         = form_with(url: select_pet_path, scope: :session, local: true) do |f|
           = hidden_field_tag :pet_id, p.id
           %button.flex.items-center.text-xl.mb-1.font-bold.w-full.hover:bg-gray-600.rounded-lg{class: "#{@pet==p ? "lg:bg-sky-600 lg:hover:bg-sky-700" : ""}"}
             -if p.avatar.present?
-              = image_tag p.avatar, class: "img-thumbnail lg:ml-4 lg:mr-2 justify-start w-6 h-6 border-2 border-gray-400 rounded-full object-cover"
+              = image_tag p.avatar, class: "img-thumbnail ml-1 lg:ml-4 lg:mr-2 justify-start w-6 h-6 border-2 rounded-full object-cover #{@pet==p ? "border-white" : "border-gray-400"}"
             - else 
-              %img#imgNew.img-fluid.lg:ml-4.lg:mr-2.img-thumbnail.border-2.border-gray-400.w-6.h-6.mx-1.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
+              %img#imgNew.img-fluid.lg:ml-4.lg:mr-2.img-thumbnail.bg-white.border-2.border-gray-400.w-6.h-6.mx-1.rounded-full.object-cover{:src => image_path('dog_paw.png'), class: "#{@pet==p ? "border-white" : "border-gray-400"}"}/
             %span.hidden.lg:inline-block= p.name
             = f.submit ""
   .w-full.rounded-lg.shadow.mt-2.inline-block.sm:max-w-lg.xl:p-0

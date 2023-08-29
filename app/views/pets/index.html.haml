@@ -4,3 +4,10 @@
     .w-full.rounded-lg.shadow.border.md:mt-0.sm:max-w-5xl.xl:p-0.bg-gray-800.border-gray-700
       .grid.gap-8.px-4.py-6.lg:py-10.md:grid-cols-2
         = render "pet_index"
+      #pager.min-w-full.my-8.flex.justify-between
+        %div
+          - if @pagy.prev
+            = link_to "< Previous page", pets_path( page: @pagy.prev), class: "rounded py-3 bg-gray-600 text-white block hover:bg-gray-800"
+        .text-right
+          - if @pagy.next
+            = link_to "Next page >", pets_path(page: @pagy.next), class: "rounded py-3 px-5 bg-gray-600 text-white block hover:bg-gray-800"

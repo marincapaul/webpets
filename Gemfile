@@ -34,6 +34,8 @@ gem 'active_storage_validations'
 #pagination
 gem 'pagy'
 
+gem 'faker'
+
 # S3 for file uploads
 gem 'aws-sdk-s3'
 

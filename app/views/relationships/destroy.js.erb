@@ -1,7 +1,2 @@
-var partial1 = "<%= escape_javascript(render('pets/follow')) %>";
-var partial2 = "<%= escape_javascript(render('pets/unfollow')) %>";
-
-var combinedHtml = partial1 + partial2;
-
-$("#follow_form").html(combinedHtml);
+$("#follow_form").html("<%= escape_javascript(render('pets/follow')) %>");
 $("#followers").html('<%= @pet.followers.count %>');
