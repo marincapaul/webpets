@@ -1,7 +1,9 @@
 require "test_helper"
 
 class OwnersControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = owners(:ion)
+    @other_user = owners(:dan)
+  end
+
 end

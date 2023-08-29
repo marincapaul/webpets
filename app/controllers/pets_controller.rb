@@ -5,7 +5,7 @@ class PetsController < ApplicationController
   before_action :has_pets, only: [:index]
   
   def index 
-    @pets = Pet.all.where.not(owner_id: current_owner.id)
+    @pagy, @pets = pagy_countless(Pet.all.where.not(owner_id: current_owner.id), items: 20)
   end
 
   def create
@@ -48,7 +48,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
-    @pagy, @posts = pagy_countless(@pet.posts, items: 8)
+    @pagy, @posts = pagy_countless(@pet.posts, items: 10)
     @new_post = Pet.find(params[:id]).posts.build
     @current_pets = current_owner.pets.map{ |p| [p.name, p.id] } 
   end

@@ -4,7 +4,7 @@
       = image_tag pet.avatar, class: "mx-auto w-24 h-24 rounded-full border-gray-600 border-4" 
   - else
     %a{:href => "#"}
-      %img.h-24.w-24.rounded-full.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
+      %img.h-24.w-24.rounded-full.bg-white.border-gray-600.border-4{:src => image_path('dog_paw.png')}/
   .p-5
     %h3.text-xl.font-bold.tracking-tight.text-white
       %a{:href => pet_path(pet.id)}= pet.name

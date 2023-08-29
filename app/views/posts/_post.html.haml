@@ -7,7 +7,7 @@
             -if post.pet.avatar.present?
               = image_tag post.pet.avatar, class: "img-thumbnail w-10 h-10 rounded-full object-cover", id: "imgNew"
             - else 
-              %img#imgNew.img-fluid.img-thumbnail.w-8.h-8.mx-1.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
+              %img#imgNew.img-fluid.img-thumbnail.w-8.h-8.bg-white.mx-1.rounded-full.object-cover{:src => image_path('dog_paw.png')}/
             %p= link_to post.pet.name, post.pet
           - if post.media.attached?
             .py-5
